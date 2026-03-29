@@ -1,255 +1,261 @@
-import React, { useState, useRef } from "react";
-import { FaCar, FaMotorcycle, FaTaxi } from "react-icons/fa";
+import React from "react";
+import {
+  FaGasPump,
+  FaCogs,
+  FaBookmark,
+  FaMotorcycle,
+  FaFacebook,
+  FaMobile,
+  FaInstagram,
+  FaMapMarkedAlt,
+  FaCar,
+} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const Home = () => {
-  const [rideType, setRideType] = useState("");
-  const [showRides, setShowRides] = useState(false);
-  const [selectedRide, setSelectedRide] = useState(null);
-  const [showPopup, setShowPopup] = useState(false);
-
-  // ✅ NEW STATES
-  const [pickup, setPickup] = useState("");
-  const [drop, setDrop] = useState("");
-  const [message, setMessage] = useState("");
-  const [showToast, setShowToast] = useState(false);
-
-  const rideRef = useRef(null);
-
-  const rides = [
-    {
-      id: 1,
-      type: "Bike",
-      price: "₹50",
-      driver: "Rahul",
-      vehicle: "Hero Splendor",
-      number: "DL 8S AB 2341",
-      rating: "4.9",
-      photo: "https://randomuser.me/api/portraits/men/32.jpg",
-    },
-    {
-      id: 2,
-      type: "Auto",
-      price: "₹80",
-      driver: "Amit",
-      vehicle: "Bajaj Auto",
-      number: "DL 1R 9823",
-      rating: "4.7",
-      photo: "https://randomuser.me/api/portraits/men/45.jpg",
-    },
-    {
-      id: 3,
-      type: "Car",
-      price: "₹140",
-      driver: "Sandeep",
-      vehicle: "WagonR",
-      number: "DL 3C 8831",
-      rating: "4.8",
-      photo: "https://randomuser.me/api/portraits/men/12.jpg",
-    },
-  ];
-
-  // ✅ FIND RIDE LOGIC
-  const handleFindRide = () => {
-    if (!pickup || !drop) {
-      setMessage("⚠️ Please enter pickup & drop location");
-      setShowToast(true);
-
-      setTimeout(() => setShowToast(false), 2000);
-      return;
-    }
-
-    setShowRides(true);
-
-    // scroll to vehicle list
-    setTimeout(() => {
-      rideRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  };
-
-  const confirmRide = (ride) => {
-    setSelectedRide(ride);
-    setShowPopup(true);
-  };
-
+function Home() {
+    const navigate = useNavigate();
   return (
-    <div className="min-h-screen bg-gray-100 pt-10">
+    
+    <div className="w-full min-h-auto ">
+      
+      {/* 🔥 HERO SECTION */}
+      <section className="text-center py-10 px-4 md:px-16">
+        <h1 className="text-3xl md:text-5xl font-bold leading-snug">
+          Welcome{" "}
+          <span className="px-2 rounded text-blue-300">
+            Yatri
+          </span>{" "}
+          Vehicles Available In Exciting Destinations.
+        </h1>
+          <div className="flex justify-center items-center gap-6 mt-6">
 
-      {/* Toast */}
-      {showToast && (
-        <div className="fixed top-20 right-5 bg-red-500 text-white px-4 py-2 rounded-lg z-50">
-          {message}
+            <FaMotorcycle className="text-cyan-300  text-2xl" />
+         <FaCar className="text-cyan-300 text-2xl" />
+
         </div>
-      )}
+        {/* SEARCH BAR */}
+        <div className="mt-8 bg-white shadow-lg rounded-4xl flex flex-col md:flex-row items-center p-3 gap-3 max-w-3xl mx-auto">
+            <FaMapMarkedAlt className="text-green-500"/>
+          <input
+            type="text"
+            placeholder="Pickup"
+            className="flex-1 px-4 py-2 outline-none"
+          />  <FaMapMarkedAlt className="text-red-500"/>
+         
+           <input
+            type="text"
+            placeholder="Dropdown"
+            className="flex-1 px-4 py-2 outline-none"
+          />
+         
+         
 
-      {/* Heading */}
-      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold px-4 sm:px-10 mb-4">
-        Welcome to <span className="text-emerald-500">Yatri</span>
-      </h1>
+       <button  
+       onClick={() => navigate("ride ")}
+   className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full flex items-center gap-2 transition"
+>
+  <FaBookmark /> Book Now
+</button>
+        </div>
 
-      {/* Main Layout */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-4 sm:px-6 md:px-10">
+        {/* CAR IMAGE */}
+        <img
+          src="https://p.kindpng.com/picc/s/722-7223309_bike-taxi-png-transparent-png.png"
+          alt=""
+          className="mx-auto mt-10 w-70 max-w-3xl"
+        />
+      </section>
 
-        {/* LEFT */}
-        <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-lg">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">
-            Book Your Ride
+      {/* 💼 FEATURES */}
+      <section className="px-6 md:px-16 py-16 grid md:grid-cols-2 gap-10 items-center">
+
+        <div>
+          <p className="text-blue-500 font-medium">
+            Your Trusted Travel Partner
+          </p>
+
+          <h2 className="text-3xl md:text-4xl font-bold mt-2">
+            Helping You Every Step Of The Way
           </h2>
 
-          <input
-            type="text"
-            placeholder="Pickup location"
-            value={pickup}
-            onChange={(e) => setPickup(e.target.value)}
-            className="w-full border p-2 sm:p-3 rounded-lg mb-3"
-          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
 
-          <input
-            type="text"
-            placeholder="Drop location"
-            value={drop}
-            onChange={(e) => setDrop(e.target.value)}
-            className="w-full border p-2 sm:p-3 rounded-lg mb-4"
-          />
-
-          {/* Ride Type */}
-          <div className="flex flex-wrap gap-4 mb-6 text-sm sm:text-base">
-            <label className="flex items-center gap-2">
-              <FaMotorcycle />
-              <input
-                type="radio"
-                checked={rideType === "bike"}
-                onChange={() => setRideType("bike")}
-              />
-              Bike
-            </label>
-
-            <label className="flex items-center gap-2">
-              <FaTaxi />
-              <input
-                type="radio"
-                checked={rideType === "auto"}
-                onChange={() => setRideType("auto")}
-              />
-              Auto
-            </label>
-
-            <label className="flex items-center gap-2">
-              <FaCar />
-              <input
-                type="radio"
-                checked={rideType === "car"}
-                onChange={() => setRideType("car")}
-              />
-              Car
-            </label>
-          </div>
-
-          {/* Button */}
-          <button
-            onClick={handleFindRide}
-            disabled={!pickup || !drop}
-            className={`w-full py-2 sm:py-3 rounded-lg transition 
-              ${
-                pickup && drop
-                  ? "bg-black text-white hover:text-emerald-400"
-                  : "bg-gray-400 cursor-not-allowed"
-              }`}
-          >
-            Find Ride
-          </button>
-        </div>
-
-        {/* RIGHT */}
-        <div className="space-y-4">
-          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
-            <h3 className="font-bold text-lg mb-3">Available Rides</h3>
-
-            <div className="space-y-2 text-sm sm:text-base">
-              <div className="flex justify-between">
-                <span className="font-bold">Bike</span>
-                <span>₹40 - ₹70</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="font-bold">Auto</span>
-                <span>₹60 - ₹120</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="font-bold">Car</span>
-                <span>₹120 - ₹200</span>
-              </div>
+            <div className="bg-gray-100 p-4 rounded">
+              <h3 className="font-semibold">Quick Service</h3>
+              <p className="text-sm text-gray-500">
+                Instant bookings with fast service.
+              </p>
             </div>
-          </div>
 
-          <div className="bg-emerald-500 text-white p-4 sm:p-6 rounded-xl shadow-lg">
-            🎁 20% OFF First Ride (YATRI20)
-          </div>
+            <div className="bg-gray-100 p-4 rounded">
+              <h3 className="font-semibold">Wide Selection</h3>
+              <p className="text-sm text-gray-500">
+                Choose from bikes, cars & more.
+              </p>
+            </div>
 
-          <div className="bg-orange-500 text-white p-4 sm:p-6 rounded-xl shadow-lg">
-            🎁 10% OFF Car Ride (YATRI08)
+            <div className="bg-gray-100 p-4 rounded">
+              <h3 className="font-semibold">Transparent Pricing</h3>
+              <p className="text-sm text-gray-500">
+                No hidden charges.
+              </p>
+            </div>
+
+            <div className="bg-gray-100 p-4 rounded">
+              <h3 className="font-semibold">24/7 Support</h3>
+              <p className="text-sm text-gray-500">
+                Always here to help you.
+              </p>
+            </div>
+
           </div>
         </div>
-      </div>
 
-      {/* Vehicle List */}
-      {showRides && (
-        <div ref={rideRef} className="max-w-xl mx-auto mt-6 px-4 space-y-4">
-          <h2 className="text-xl sm:text-2xl font-bold">
-            Vehicle List
-          </h2>
+        {/* SIDE IMAGES */}
+        <div className="flex gap-4">
+          <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70"
+            className="rounded-xl w-1/2 object-cover"
+            alt=""
+          />
+          <img
+            src="https://images.unsplash.com/photo-1493238792000-8113da705763"
+            className="rounded-xl w-1/2 object-cover"
+            alt=""
+          />
+        </div>
 
-          {rides.map((ride) => (
+      </section>
+
+      {/* 🚗 CAR LIST */}
+      <section className="px-6 md:px-16 py-16">
+        <h1 className="text-2xl font-bold  text-blue-500">Vechile categories<hr></hr></h1>
+        <h2 className="text-xl font-bold mb-10 ">
+          Start riding with anyone
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+
+          {[
+            {
+              name: "Bike",
+              price: "₹50",
+              img: "https://pngimg.com/uploads/motorcycle/motorcycle_PNG5349.png",
+            },
+            {
+              name: "Auto",
+              price: "₹80",
+              img : "https://tse2.mm.bing.net/th/id/OIP.vxnEYSPaTRkjJm_3ic6_cAHaEp?rs=1&pid=ImgDetMain&o=7&rm=3",
+              
+            },
+
+            {
+              name: "Car",
+              price: "₹150",
+              img: "https://tse4.mm.bing.net/th/id/OIP.D_o4MlnEFDlRrHiNpRzQzwHaD_?rs=1&pid=ImgDetMain&o=7&rm=3",
+            },
+            {
+              name: "Truck",
+              price: "₹300",
+              img: "https://pngimg.com/uploads/truck/truck_PNG16257.png",
+            },
+          ].map((car, i) => (
             <div
-              key={ride.id}
-              className="bg-white p-4 rounded-xl shadow flex justify-between items-center"
+              key={i}
+              className="bg-gray-100 p-4 rounded-xl shadow hover:shadow-lg transition"
             >
-              <div className="flex gap-3 items-center">
-                <img
-                  src={ride.photo}
-                  alt=""
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full"
-                />
-                <div>
-                  <h3 className="font-semibold">{ride.type}</h3>
-                  <p className="text-xs text-gray-500">
-                    {ride.driver} ⭐ {ride.rating}
-                  </p>
-                </div>
-              </div>
+              <img src={car.img} alt="" className="h-24 mx-auto" />
 
-              <button
-                onClick={() => confirmRide(ride)}
-                className="bg-emerald-500 text-white px-3 py-1 rounded"
-              >
-                {ride.price}
-              </button>
+              <h3 className="font-semibold mt-3">{car.name}</h3>
+              <p className="text-blue-500">{car.price}/ride</p>
+
+              <div className="flex justify-between text-sm mt-2 text-gray-500">
+                <span><FaCogs /> Auto</span>
+                <span><FaGasPump /> Petrol</span>
+              </div>
             </div>
           ))}
         </div>
-      )}
+      </section>
 
-      {/* Popup */}
-      {showPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center px-4">
-          <div className="bg-white p-6 rounded-xl w-full max-w-sm text-center">
-            <h2 className="text-lg font-bold mb-4">
-              🎉 Ride Confirmed
-            </h2>
+      {/* 🦶 FOOTER */}
+      <footer className=" bg-amber-50 text-black px-6 ">
 
-            <p className="font-semibold">{selectedRide?.driver}</p>
-            <p>{selectedRide?.vehicle}</p>
-            <p>{selectedRide?.number}</p>
+  <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
 
-            <button
-              onClick={() => setShowPopup(false)}
-              className="w-full bg-black text-white py-2 mt-4 rounded"
-            >
-              OK
-            </button>
-          </div>
-        </div>
-      )}
+    {/* 🔹 LEFT - BRAND */}
+    <div>
+      <div className="flex items-center gap-2 text-2xl font-bold">
+        <FaMotorcycle className="text-blue-500" />
+        Yatri
+      </div>
+
+      <p className="text-gray-400 mt-3 text-sm">
+        Easy and fast ride booking platform for your daily travel needs.
+      </p>
+
+      {/* SOCIAL ICONS */}
+      <div className="flex gap-4 mt-4 text-lg">
+        <FaFacebook className="hover:text-blue-500 cursor-pointer" />
+        <FaInstagram className="hover:text-pink-500 cursor-pointer" />
+        <FaMobile className="hover:text-green-400 cursor-pointer" />
+      </div>
+    </div>
+
+    {/* 🔹 CENTER - COMPANY */}
+    <div>
+      <h3 className="font-semibold text-lg mb-3">Company</h3>
+      <ul className="space-y-2 text-gray-400 text-sm">
+        <li className="hover:text-white cursor-pointer">About</li>
+        <li className="hover:text-white cursor-pointer">Careers</li>
+        <li className="hover:text-white cursor-pointer">Contact</li>
+      </ul>
+    </div>
+
+    {/* 🔹 RIGHT - SUPPORT */}
+    <div>
+      <h3 className="font-semibold text-lg mb-3">Support</h3>
+      <ul className="space-y-2 text-gray-400 text-sm">
+        <li className="hover:text-white cursor-pointer">Help Center</li>
+        <li className="hover:text-white cursor-pointer">Safety Instructions</li>
+        <li className="hover:text-white cursor-pointer">Contact Support</li>
+        <li className="hover:text-white cursor-pointer">Accessibility</li>
+        <li className="hover:text-white cursor-pointer">Cancellation</li>
+      </ul>
+    </div>
+
+    {/* 🔹 EXTREME RIGHT - SUBSCRIBE */}
+    <div>
+      <h3 className="font-semibold text-lg mb-3">Stay Updated</h3>
+
+      <p className="text-gray-400 text-sm mb-3">
+        Subscribe for latest updates and offers
+      </p>
+
+      <div className="flex">
+        <input
+          type="email"
+          placeholder="Enter email"
+          className="px-3 py-2 rounded-l bg-gray-800 text-white outline-none w-full"
+        />
+
+        <button className="bg-blue-500 px-4 py-2 rounded-r hover:bg-blue-600">
+          Subscribe
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  {/* 🔻 BOTTOM */}
+  <div className="border-t border-gray-700 mt-10 pt-5 text-center text-gray-500 text-sm">
+    © 2026 Yatri. All rights reserved.
+  </div>
+
+</footer>
+
     </div>
   );
-};
+}
 
 export default Home;
