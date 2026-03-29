@@ -1,83 +1,119 @@
 import React from "react";
-import {FaMobile,  FaTired, FaShieldAlt } from "react-icons/fa";
+import {
+  FaShieldAlt,
+  FaUserCheck,
+  FaMapMarkedAlt,
+  FaPhoneAlt,
+  FaMotorcycle,
+  FaCar,
+  FaCheckCircle,
+} from "react-icons/fa";
 
-function Safety() {
-  const callEmergency = () => {
-    window.location.href = "tel:112";
-  };
-
+const Safety = () => {
   return (
-    <div className="min-h-screen text-black px-6 py-10 text-2xl">
+    <div className="min-h-screen bg-gray-50 text-gray-800">
 
-      {/* Header */}
-      <div className=" text-2xl flex items-center gap-3 ">
-        <FaShieldAlt className="text-emerald-500 w-6 h-6 sm:w-8 sm:h-8" />
-        <h1 className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-800">
-          Your Safety Matters
+      {/* 🔥 HERO */}
+      <section className="text-center py-16 px-6 bg-gradient-to-r from-blue-500 to-cyan-400 text-white">
+        <h1 className="text-4xl md:text-5xl font-bold">
+          Your Safety is Our Priority 
         </h1>
-      </div>
 
-      {/* Grid Layout */}
-      <div className="grid grid-cols-1 mb:grid-cols-2 gap-6">
-
-        {/* Passenger Card */}
-        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-5">
-          <h2 className="text-base sm:text-lg font-semibold text-emerald-600 mb-3">
-            🚗 For Passengers
-          </h2>
-
-          <ul className="text-xs sm:text-sm text-gray-700 space-y-2">
-            <li>✔ Confirm driver name, photo & vehicle number.</li>
-            <li>✔ Share trip details with trusted contacts.</li>
-            <li>✔ Sit in the back seat for safety.</li>
-            <li>✔ Track your ride live.</li>
-            <li>✔ Avoid sharing personal info.</li>
-          </ul>
-
-          <button
-            onClick={callEmergency}
-            className="mt-4 w-full flex items-center justify-center gap-2 bg-red-500 hover:bg-red-600 text-white py-2 rounded-xl text-sm sm:text-base"
-          >
-            <FaMobile size={16} />
-            Emergency Help
-          </button>
-        </div>
-
-        {/* Driver Card */}
-        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-5">
-          <h2 className="text-base sm:text-lg font-semibold text-blue-600 mb-3">
-            🧑‍✈️ For Drivers
-          </h2>
-
-          <ul className="text-xs sm:text-sm text-gray-700 space-y-2">
-            <li>✔ Verify passenger before trip.</li>
-            <li>✔ Follow traffic rules.</li>
-            <li>✔ Maintain vehicle hygiene.</li>
-            <li>✔ No phone while driving.</li>
-            <li>✔ Respect passengers.</li>
-          </ul>
-        </div>
-
-      </div>
-
-      {/* Warning */}
-      <div className="mt-6 bg-yellow-100 border-l-4 border-yellow-500 p-3 sm:p-4 rounded-lg flex gap-2 sm:gap-3">
-        <FaTired className="text-yellow-600 w-5 h-5 sm:w-6 sm:h-6" />
-        <p className="text-xs sm:text-sm text-gray-800">
-          If you feel unsafe, use the emergency button or contact authorities immediately.
+        <p className="mt-4 text-lg max-w-2xl mx-auto">
+          We ensure every ride is safe, secure and comfortable with verified drivers and real-time tracking.
         </p>
-      </div>
 
-      {/* Floating SOS Button */}
-      <button
-        onClick={callEmergency}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-full shadow-xl text-sm sm:text-base"
-      >
-        🚨 SOS
-      </button>
+        {/* ICONS */}
+        <div className="flex justify-center gap-8 mt-6 text-3xl">
+          <FaMotorcycle />
+          <FaCar />
+        </div>
+      </section>
+
+      {/* 🛡️ SAFETY FEATURES */}
+      <section className="px-6 md:px-16 py-16 grid md:grid-cols-2 gap-10">
+
+        {[
+          {
+            icon: <FaUserCheck />,
+            title: "Verified Drivers",
+            desc: "All drivers are background checked and verified for your safety.",
+          },
+          {
+            icon: <FaMapMarkedAlt />,
+            title: "Live Ride Tracking",
+            desc: "Track your ride in real-time and share with your family.",
+          },
+          {
+            icon: <FaPhoneAlt />,
+            title: "Emergency Support",
+            desc: "24/7 helpline support available anytime during your ride.",
+          },
+          {
+            icon: <FaShieldAlt />,
+            title: "Secure Payments",
+            desc: "Safe and encrypted payment system with no hidden charges.",
+          },
+        ].map((item, i) => (
+          <div
+            key={i}
+            className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition flex gap-4 items-start"
+          >
+            <div className="text-blue-500 text-2xl">{item.icon}</div>
+
+            <div>
+              <h3 className="font-semibold text-lg">{item.title}</h3>
+              <p className="text-gray-500 text-sm mt-1">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+
+      </section>
+
+      {/* 📋 SAFETY TIPS */}
+      <section className="px-6 md:px-16 pb-16">
+
+        <h2 className="text-3xl font-bold mb-8 text-center">
+          Safety Tips for Riders
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+
+          {[
+            "Always verify driver details before starting ride",
+            "Share ride details with friends or family",
+            "Wear helmet or seatbelt at all times",
+            "Avoid sharing personal information",
+            "Use in-app chat/call for communication",
+            "Report any suspicious activity immediately",
+          ].map((tip, i) => (
+            <div
+              key={i}
+              className="bg-white p-5 rounded-xl shadow flex items-center gap-3"
+            >
+              <FaCheckCircle className="text-green-500" />
+              <p className="text-sm">{tip}</p>
+            </div>
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* 📞 EMERGENCY */}
+      <section className=" text-black py-12 text-center">
+        <h2 className="text-2xl font-bold">Emergency Help</h2>
+        <p className="text-gray-400 mt-2">
+          Call support immediately if you feel unsafe
+        </p>
+
+        <button className="mt-5 bg-red-500 px-6 py-2 rounded-full hover:bg-red-600 transition">
+          Call Support
+        </button>
+      </section>
 
     </div>
   );
-}
+};
 
 export default Safety;

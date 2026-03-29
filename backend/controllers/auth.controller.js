@@ -51,3 +51,5 @@ async function registerUser(req, res) {
     });
 
 }
+// git commit -m "added user model"
+// git push -u origin backend/feature-adding
