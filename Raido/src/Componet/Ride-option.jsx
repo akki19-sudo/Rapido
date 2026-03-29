@@ -62,7 +62,7 @@ const RideOptions = () => {
     }
   ];
 
-  // ✅ Fake distance (temporary)
+ 
   useEffect(() => {
     if (pickup && drop) {
       const dist = (pickup.length + drop.length) % 10 + 2;
@@ -109,11 +109,16 @@ const RideOptions = () => {
   const seconds = timer % 60;
 
   return (
-    <div className="pt-24 min-h-screen bg-gray-100">
-
+    <div className="pt-8 min-h-screen ">
+            <h1 className="text-2xl text-blue-300 font-bold">Book Ride</h1>
+            <p className="ml-8 font-sans">Insert your current location to pickup and dropdown to before starting ride app correctly properly  to giving fear amount to not including extra charges    </p>
+        
+       
+           
+      
       {/* Toast */}
       {showToast && (
-        <div className="fixed top-20 right-5 bg-red-500 text-white px-4 py-2 rounded z-50">
+        <div className="fixed top-30 right-5 bg-red-500 text-white px-5 py-2 rounded z-60">
           {message}
         </div>
       )}
@@ -273,8 +278,11 @@ const RideOptions = () => {
             >
               OK
             </button>
-
+            
           </div>
+
+
+          {/* find location */}
 
         </div>
       )}
