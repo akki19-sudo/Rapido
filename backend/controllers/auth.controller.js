@@ -1,4 +1,3 @@
-//  backend/feature-adding
 const usermodel = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -51,5 +50,3 @@ async function registerUser(req, res) {
     });
 
 }
-// git commit -m "added user model"
-// git push -u origin backend/feature-adding

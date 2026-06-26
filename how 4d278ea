@@ -1,0 +1,174 @@
+[33mcommit af39972ce49f23e5cdc73bd51d3664f38fdab89f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mbackend/feature-adding[m[33m)[m
+Merge: 1ef21c5 4d278ea
+Author: adarsh Kumar <adarsh99733207@gmail.com>
+Date:   Sun Mar 29 13:11:33 2026 +0530
+
+    Merge branch 'main' of https://github.com/akki19-sudo/Rapido into backend/feature-adding
+    # Please enter a commit message to explain why this merge is necessary,
+    # especially if it merges an updated upstream into a topic branch.
+    #
+    # Lines starting with '#' will be ignored, and an empty message aborts
+    # the commit.
+
+[33mcommit 4d278eafe629a1c19c8775bba302829d3a4d012e[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: AKKI <kravi004785@gmail.com>
+Date:   Sun Mar 29 12:55:58 2026 +0530
+
+    Refactor About component and update content
+    
+    final updation component
+
+[1mdiff --git a/Raido/src/Componet/About.jsx b/Raido/src/Componet/About.jsx[m
+[1mindex bd3f11e..1ecec3e 100644[m
+[1m--- a/Raido/src/Componet/About.jsx[m
+[1m+++ b/Raido/src/Componet/About.jsx[m
+[36m@@ -1,64 +1,144 @@[m
+ import React from "react";[m
+[31m-import { FaMotorcycle } from "react-icons/fa";[m
+[32m+[m[32mimport {[m
+[32m+[m[32m  FaMotorcycle,[m
+[32m+[m[32m  FaCar,[m
+[32m+[m[32m  FaUsers,[m
+[32m+[m[32m  FaRocket,[m
+[32m+[m[32m  FaShieldAlt,[m
+[32m+[m[32m  FaMapMarkedAlt,[m
+[32m+[m[32m} from "react-icons/fa";[m
+ [m
+[31m-function About() {[m
+[32m+[m[32mconst About = () => {[m
+   return ([m
+[31m-    <div className="min-h-screen text-black px-6 py-10 text-xl ">[m
+[31m-      {/* Logo / Brand */}[m
+[31m-      <div className="flex items-center gap-2 text-emerald-400 text-3xl font-bold m-5">[m
+[31m-        <FaMotorcycle />[m
+[31m-        <span>Yatri</span>[m
+[31m-      </div>[m
+[31m-      <hr></hr>[m
+[31m-[m
+[31m-      {/* Hero Section */}[m
+[31m-      <div className="mt-5 max-w-2xl">[m
+[31m-        <h1 className="text-xl font-bold leading-tight">[m
+[31m-          Book your ride <span className="text-emerald-400">safe & secure</span>[m
+[32m+[m[32m    <div className="min-h-screen bg-gray-50 text-gray-800">[m
+[32m+[m
+[32m+[m[32m      {/* 🔥 HERO */}[m
+[32m+[m[32m      <section className="text-center py-16 px-6 bg-gradient-to-r from-blue-500 to-cyan-400 text-white">[m
+[32m+[m[32m        <h1 className="text-4xl md:text-5xl font-bold">[m
+[32m+[m[32m          About Yatri[m[41m [m
+         </h1>[m
+[31m-        <p className="mt-4 text-gray-500 text-sm">[m
+[31m-          Yatri is your trusted ride partner. We ensure fast, reliable, and affordable transportation[m
+[31m-          with top-notch safety and comfort.[m
+[32m+[m
+[32m+[m[32m        <p className="mt-4 max-w-2xl mx-auto text-lg">[m
+[32m+[m[32m          Yatri is your trusted ride partner designed to make travel easy,[m
+[32m+[m[32m          safe, and affordable for everyone.[m
+         </p>[m
+[31m-      </div>[m
+ [m
+[31m-      {/* Card Section */}[m
+[31m-      <div className="mt-10 grid md:grid-cols-3 gap-6 ">[m
+[32m+[m[32m        {/* ICONS */}[m
+[32m+[m[32m        <div className="flex justify-center gap-8 mt-6 text-3xl">[m
+[32m+[m[32m          <FaMotorcycle />[m
+[32m+[m[32m          <FaCar />[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m      </section>[m
+[32m+[m
+[32m+[m[32m      {/* 💡 ABOUT CONTENT */}[m
+[32m+[m[32m      <section className="px-6 md:px-16 py-16 grid md:grid-cols-2 gap-10 items-center">[m
+[32m+[m
+[32m+[m[32m        {/* TEXT */}[m
+[32m+[m[32m        <div>[m
+[32m+[m[32m          <h2 className="text-3xl font-bold mb-4">[m
+[32m+[m[32m            Who We Are[m
+[32m+[m[32m          </h2>[m
+ [m
+[31m-        <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-105 transition">[m
+[31m-          <h2 className="text-lg font-semibold text-emerald-400">🚀 Fast Booking</h2>[m
+[31m-          <p className="text-gray-500 mt-2 text-sm">[m
+[31m-            Book your ride instantly with just a few clicks.[m
+[32m+[m[32m          <p className="text-gray-600 mb-4">[m
+[32m+[m[32m            Yatri is a smart ride booking platform that connects users with[m
+[32m+[m[32m            reliable drivers in seconds. Whether you need a bike, auto, or car,[m
+[32m+[m[32m            we provide fast and affordable travel options.[m
+           </p>[m
+[31m-        </div>[m
+ [m
+[31m-        <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-105 transition">[m
+[31m-          <h2 className="text-lg font-semibold text-emerald-400">🔒 Secure Rides</h2>[m
+[31m-          <p className="text-gray-500 mt-2 text-sm">[m
+[31m-            Your safety is our top priority with verified drivers.[m
+[32m+[m[32m          <p className="text-gray-600">[m
+[32m+[m[32m            Our mission is to simplify transportation with technology,[m
+[32m+[m[32m            ensuring safety, transparency, and comfort for every user.[m
+           </p>[m
+         </div>[m
+ [m
+[31m-        <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-105 transition">[m
+[31m-          <h2 className="text-lg font-semibold text-emerald-400">💸 Affordable</h2>[m
+[31m-          <p className="text-gray-500 mt-2 text-sm">[m
+[31m-            Get the best prices with no hidden charges.[m
+[31m-          </p>[m
+[32m+[m[32m        {/* IMAGE */}[m
+[32m+[m[32m        <div>[m
+[32m+[m[32m          <img[m
+[32m+[m[32m            src="https://tse4.mm.bing.net/th/id/OIP.ToCh-eglylp4nKeWuHBq4gHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"[m
+[32m+[m[32m            alt=""[m
+[32m+[m[32m            className="rounded-xl shadow-md"[m
+[32m+[m[32m          />[m
+         </div>[m
+ [m
+[31m-      </div>[m
+[32m+[m[32m      </section>[m
+[32m+[m
+[32m+[m[32m      {/* 🚀 FEATURES / VALUES */}[m
+[32m+[m[32m      <section className="px-6 md:px-16 pb-16">[m
+[32m+[m
+[32m+[m[32m        <h2 className="text-3xl font-bold text-center mb-10">[m
+[32m+[m[32m          Why Choose Yatri?[m
+[32m+[m[32m        </h2>[m
+[32m+[m
+[32m+[m[32m        <div className="grid md:grid-cols-3 gap-6">[m
+[32m+[m
+[32m+[m[32m          {[[m
+[32m+[m[32m            {[m
+[32m+[m[32m              icon: <FaRocket />,[m
+[32m+[m[32m              title: "Fast Booking",[m
+[32m+[m[32m              desc: "Book your ride instantly with just one click.",[m
+[32m+[m[32m            },[m
+[32m+[m[32m            {[m
+[32m+[m[32m              icon: <FaShieldAlt />,[m
+[32m+[m[32m              title: "Safe Rides",[m
+[32m+[m[32m              desc: "Verified drivers and secure ride experience.",[m
+[32m+[m[32m            },[m
+[32m+[m[32m            {[m
+[32m+[m[32m              icon: <FaMapMarkedAlt />,[m
+[32m+[m[32m              title: "Real-Time Tracking",[m
+[32m+[m[32m              desc: "Track your ride live with accurate GPS.",[m
+[32m+[m[32m            },[m
+[32m+[m[32m            {[m
+[32m+[m[32m              icon: <FaUsers />,[m
+[32m+[m[32m              title: "Trusted by Users",[m
+[32m+[m[32m              desc: "Thousands of happy customers trust Yatri daily.",[m
+[32m+[m[32m            },[m
+[32m+[m[32m          ].map((item, i) => ([m
+[32m+[m[32m            <div[m
+[32m+[m[32m              key={i}[m
+[32m+[m[32m              className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center"[m
+[32m+[m[32m            >[m
+[32m+[m[32m              <div className="text-blue-500 text-3xl mb-3 flex justify-center">[m
+[32m+[m[32m                {item.icon}[m
+[32m+[m[32m              </div>[m
+[32m+[m
+[32m+[m[32m              <h3 className="font-semibold text-lg">{item.title}</h3>[m
+[32m+[m[32m              <p className="text-gray-500 text-sm mt-2">{item.desc}</p>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m          ))}[m
+[32m+[m
+[32m+[m[32m        </div>[m
+[32m+[m
+[32m+[m[32m      </section>[m
+[32m+[m
+[32m+[m[32m      {/* 📊 STATS */}[m
+[32m+[m[32
